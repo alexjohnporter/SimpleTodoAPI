@@ -1,0 +1,13 @@
+#!/bin/bash
+apt-get update && apt-get install -y --force-yes php5-pgsql
+
+# Symfony Setup
+php bin/console --env=development doctrine:database:create --env=development
+php bin/console --env=development assets:install --symlink web
+chown -R www-data:www-data -R /var/www/var/cache /var/www/var/log
+
+# php5-fpm
+service php5-fpm start
+
+# nginx
+nginx

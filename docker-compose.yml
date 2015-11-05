@@ -1,0 +1,23 @@
+application:
+    image: rawkode/nginx-php
+    entrypoint: ./opt/docker/development/entrypoint
+    ports:
+        - 10000:80
+    volumes:
+      - ./opt/nginx/development/virtual-host.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www
+    links:
+          - database:database
+    volumes_from:
+      - symfony_cache_and_logs
+
+symfony_cache_and_logs:
+  image: busybox
+  volumes:
+    - /var/www/var/cache
+    - /var/www/var/log
+
+database:
+  image: postgres
+  environment:
+    - POSTGRES_PASSWORD=postgres

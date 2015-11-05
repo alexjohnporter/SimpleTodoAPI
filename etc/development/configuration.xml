@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:framework="http://symfony.com/schema/dic/symfony"
+           xmlns:monolog="http://symfony.com/schema/dic/monolog"
+           xmlns:web-profiler="http://symfony.com/schema/dic/webprofiler"
+           xmlns:doctrine="http://symfony.com/schema/dic/doctrine"
+           xmlns="http://symfony.com/schema/dic/services">
+
+    <imports>
+        <import resource="../configuration.xml"/>
+        <import resource="parameters.xml"/>
+    </imports>
+
+    <framework:config>
+        <framework:profiler only-exceptions="false"/>
+    </framework:config>
+
+    <monolog:config>
+        <monolog:handler name="symfony" type="stream" level="debug" path="%kernel.logs_dir%/monolog.log"/>
+    </monolog:config>
+
+    <doctrine:config>
+        <doctrine:dbal
+                driver="%database_driver%"
+                host="%database_host%"
+                port="%database_port%"
+                dbname="%database_name%"
+                user="%database_user%"
+                password="%database_password%"
+                />
+    </doctrine:config>
+
+    <web-profiler:config
+            toolbar="true"
+            intercept-redirects="false"
+            />
+</container>

@@ -1,0 +1,8 @@
+default:
+  autoload:
+    '': %paths.base%/test/behat/contexts
+
+  suites:
+    default::
+      paths:
+        - %paths.base%/test/behat/features/default

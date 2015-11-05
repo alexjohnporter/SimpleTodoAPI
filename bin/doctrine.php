@@ -1,0 +1,1 @@
+../var/vendor/doctrine/orm/bin/doctrine.php

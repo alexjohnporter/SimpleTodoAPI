@@ -1,0 +1,12 @@
+# composer
+bin/*
+!bin/sync
+!bin/console
+
+# PHPStorm
+.idea
+
+# Symfony
+var/cache
+var/log
+var/vendor
