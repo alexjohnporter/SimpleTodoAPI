@@ -2,8 +2,26 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://symfony.com/schema/routing"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
-    <route id="application.routes.example.hello_world" path="/">
-        <default key="_controller">application.controllers.example.hello_world</default>
+
+
+    <route id="route.app.simple_todo.view_all" path="/">
+        <default key="_controller">app.controller.simple_todo:viewAll</default>
+    </route>
+
+    <route id="route.app.simple_todo.viewTodo" path="/view/{identifier}">
+        <default key="_controller">app.controller.simple_todo:viewTodo</default>
+    </route>
+
+    <route id="route.app.simple_todo.addTodo" path="/add" methods="POST">
+        <default key="_controller">app.controller.simple_todo:addTodo</default>
+    </route>
+
+    <route id="route.app.simple_todo.updateTodo" path="/update/{identifier}" methods="POST">
+        <default key="_controller">app.controller.simple_todo:updateTodo</default>
+    </route>
+
+    <route id="route.app.simple_todo.deleteTodo" path="/delete/{identifier}" methods="POST">
+        <default key="_controller">app.controller.simple_todo:deleteTodo</default>
     </route>
 
 </routes>
