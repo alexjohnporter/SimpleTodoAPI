@@ -8,6 +8,10 @@
         <service id="app.controller.simple_todo" class="ApplicationBundle\Controllers\SimpleTodoController">
 
         </service>
+
+        <service id="app.repositories.simple_todo" class="ApplicationBundle\Repositories\SimpleTodoRepository">
+            <argument type="service" id="doctrine.dbal.default_connection" />
+        </service>
     </services>
 
 </container>
