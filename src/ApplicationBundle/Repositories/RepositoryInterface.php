@@ -1,6 +1,7 @@
 <?php
 
 namespace ApplicationBundle\Repositories;
+use ApplicationBundle\Entity\SimpleTodo;
 
 /**
  * Interface RepositoryInterface
@@ -13,7 +14,9 @@ interface RepositoryInterface
 
     public function findAll();
 
-    public function create();
+    public function create(SimpleTodo $todo);
+
+    public function update(SimpleTodo $todo);
 
     public function delete($identifier);
 }

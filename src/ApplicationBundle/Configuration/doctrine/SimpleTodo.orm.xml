@@ -16,6 +16,6 @@
         <field name="description" type="text" />
         <field name="status" type="smallint" />
         <field name="createdAt" type="datetime" />
-        <field name="updatedAt" type="datetime" />
+        <field name="updatedAt" type="datetime" nullable="true" />
     </entity>
 </doctrine-mapping>
