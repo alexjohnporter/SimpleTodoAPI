@@ -19,6 +19,11 @@
         <monolog:handler name="symfony" type="stream" level="debug" path="%kernel.logs_dir%/monolog.log"/>
     </monolog:config>
 
+    <web-profiler:config
+            toolbar="true"
+            intercept-redirects="false"
+            />
+
     <doctrine:config>
         <doctrine:dbal
                 driver="%database_driver%"
@@ -28,10 +33,13 @@
                 user="%database_user%"
                 password="%database_password%"
                 />
+        <doctrine:orm>
+            <doctrine:mapping
+                    name="ApplicationBundle"
+                    dir="Configuration/doctrine"
+                    type="xml"
+                    />
+        </doctrine:orm>
     </doctrine:config>
 
-    <web-profiler:config
-            toolbar="true"
-            intercept-redirects="false"
-            />
 </container>

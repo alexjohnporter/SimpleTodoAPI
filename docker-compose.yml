@@ -21,3 +21,5 @@ database:
   image: postgres
   environment:
     - POSTGRES_PASSWORD=postgres
+  ports:
+     - "10001:5432"
