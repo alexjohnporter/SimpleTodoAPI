@@ -36,12 +36,7 @@ class SimpleTodoController
         $results = $this->repository->findAll();
 
         if (empty($results)) {
-            return new JsonResponse(
-                [
-                    'message' => 'No Todos'
-                ],
-                JsonResponse::HTTP_OK
-            );
+            return $this->helper->showError('No Todos');
         }
 
         return new JsonResponse(
@@ -58,23 +53,13 @@ class SimpleTodoController
     public function viewTodo($identifier)
     {
         if (empty($identifier)) {
-            return new JsonResponse(
-                [
-                    'error' => 'Missing parameters'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Missing parameters');
         }
 
         $result = $this->repository->find($identifier);
 
         if (empty($result)) {
-            return new JsonResponse(
-                [
-                    'error' => 'Could not find todo'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Could not find todo');
         }
 
         return new JsonResponse(
@@ -94,12 +79,7 @@ class SimpleTodoController
         $todoDescription = $request->get('todoDescription');
 
         if (empty($todoName) && empty($todoDescription)) {
-            return new JsonResponse(
-                [
-                    'error' => 'Missing parameters'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Missing parameters');
         }
 
         try {
@@ -107,12 +87,7 @@ class SimpleTodoController
                 SimpleTodo::createTodo($todoName, $todoDescription)
             );
         } catch (\Exception $e) {
-            return new JsonResponse(
-                [
-                    'error' => 'Todo creation failed'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Todo creation failed');
         }
 
         return new JsonResponse(
@@ -127,23 +102,13 @@ class SimpleTodoController
     public function updateTodo(Request $request, $identifier)
     {
         if (empty($identifier)) {
-            return new JsonResponse(
-                [
-                    'error' => 'Missing parameters'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Missing parameters');
         }
 
         try {
             $result = $this->repository->find($identifier);
         } catch (\Exception $e) {
-            return new JsonResponse(
-                [
-                    'error' => 'Could not find todo'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Could not find todo');
         }
 
         /** @var SimpleTodo $todo */
@@ -155,12 +120,7 @@ class SimpleTodoController
         try {
             $this->repository->update($todo);
         } catch (\Exception $e) {
-            return new JsonResponse(
-                [
-                    'error' => 'Could not update todo'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Could not update todo');
         }
 
         return new JsonResponse(
@@ -179,23 +139,13 @@ class SimpleTodoController
     public function deleteTodo($identifier)
     {
         if (empty($identifier)) {
-            return new JsonResponse(
-                [
-                    'error' => 'Missing parameters'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Missing parameters');
         }
 
         try {
             $this->repository->delete($identifier);
         } catch (\Exception $e) {
-            return new JsonResponse(
-                [
-                    'error' => 'Todo deletion failed'
-                ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->helper->showError('Todo deletion failed');
         }
 
         return new JsonResponse(

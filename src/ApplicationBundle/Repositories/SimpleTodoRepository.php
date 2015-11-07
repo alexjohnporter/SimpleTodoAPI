@@ -38,7 +38,7 @@ class SimpleTodoRepository implements RepositoryInterface
      */
     public function findAll()
     {
-        return $this->database->fetchAll('SELECT * FROM todos');
+        return $this->database->fetchAll('SELECT * FROM todos ORDER BY createdat DESC');
     }
 
 
