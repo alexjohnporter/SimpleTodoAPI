@@ -4,6 +4,7 @@ namespace ApplicationBundle\Helper;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -67,4 +68,20 @@ class SimpleTodoHelper
         return new Serializer($normalizers, $encoders);
     }
 
+    /**
+     * Return a JsonResponse with a 400 error
+     *
+     * @param $errorMessage
+     * @return JsonResponse
+     */
+    public function showError($errorMessage)
+    {
+        return new JsonResponse(
+            [
+                'error' => $errorMessage
+            ],
+            JsonResponse::HTTP_BAD_REQUEST
+        );
+
+    }
 }
