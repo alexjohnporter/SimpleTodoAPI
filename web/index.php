@@ -11,6 +11,9 @@ $debug = array_key_exists('SYMFONY_DEBUG', $_SERVER) ? boolval($_SERVER['SYMFONY
 $kernel = new AppKernel($environment, $debug);
 $kernel->loadClassCache();
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Content-Type");
+
 $request = Request::createFromGlobals();
 
 $response = $kernel->handle($request);

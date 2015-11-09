@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
 
-    <route id="route.app.simple_todo.view_all" path="/">
+    <route id="route.app.simple_todo.view_all" path="/" methods="GET, OPTIONS">
         <default key="_controller">app.controller.simple_todo:viewAll</default>
     </route>
 
@@ -12,15 +12,15 @@
         <default key="_controller">app.controller.simple_todo:viewTodo</default>
     </route>
 
-    <route id="route.app.simple_todo.addTodo" path="/add" methods="POST">
+    <route id="route.app.simple_todo.addTodo" path="/add" methods="POST, OPTIONS">
         <default key="_controller">app.controller.simple_todo:addTodo</default>
     </route>
 
-    <route id="route.app.simple_todo.updateTodo" path="/update/{identifier}" methods="POST">
+    <route id="route.app.simple_todo.updateTodo" path="/update/{identifier}" methods="POST, OPTIONS">
         <default key="_controller">app.controller.simple_todo:updateTodo</default>
     </route>
 
-    <route id="route.app.simple_todo.deleteTodo" path="/delete/{identifier}" methods="POST">
+    <route id="route.app.simple_todo.deleteTodo" path="/delete/{identifier}" methods="POST, OPTIONS">
         <default key="_controller">app.controller.simple_todo:deleteTodo</default>
     </route>
 
