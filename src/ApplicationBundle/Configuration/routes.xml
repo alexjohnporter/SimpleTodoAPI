@@ -20,7 +20,7 @@
         <default key="_controller">app.controller.simple_todo:updateTodo</default>
     </route>
 
-    <route id="route.app.simple_todo.deleteTodo" path="/delete/{identifier}" methods="POST, OPTIONS">
+    <route id="route.app.simple_todo.deleteTodo" path="/delete/{identifier}" methods="DELETE, OPTIONS">
         <default key="_controller">app.controller.simple_todo:deleteTodo</default>
     </route>
 
